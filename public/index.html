@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Series anime</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <title>Anime tv shows</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Merriweather:wght@900&family=Montserrat:wght@100;700&family=Open+Sans:ital,wght@0,300;0,600;1,600&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="icon" href="./assets/images/favicon.png" />
   </head>
@@ -13,7 +15,7 @@
     <div class="page">
       
       
-      <main>
+      <main class="styles">
 
             <!-- BUSCADOR DE TV SHOWS -->
 
@@ -24,7 +26,7 @@
               placeholder="e. Dragon Ball"
             />
             <button class="form__btn js_btnSearch">Search</button>
-            <button class="reset__btn js_reset">Reset</button>
+            <button class="reset__btn js_btnReset">Reset</button>
           </form>
 
 
@@ -32,7 +34,7 @@
         
           <div class="data">
             <div class="favorites">
-              <h2 class="favorites__tittle">Favorites anime shows</h2>
+              <h2 class="favorites__title">Favorites anime shows</h2>
               <ul class="favorites__container js_favorites">
 
               <!-- LISTA DE FAVORITOS QUE AÑADIMOS CON DOM -->
@@ -55,7 +57,7 @@
                  
                  <!-- TEMPLATE PARA PINTAR EN DOM CON FRAGMENT -->
 
-                  <template id="template-card">
+                  <template id="template-card" class="styles">
                     <div class="">
                       <div class="card">
                         <div class="card-body">

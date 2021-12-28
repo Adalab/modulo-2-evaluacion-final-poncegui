@@ -17,6 +17,11 @@
   background-color: #CCC;
   color: #000; }
 
+.styles {
+  font-family: "Bangers", cursive; }
+  .styles h5 {
+    font-size: 21px; }
+
 .footer {
   position: fixed;
   left: 0;
