@@ -1,14 +1,25 @@
 .styles {
   font-family: $font-titles;
   h5 {
-    font-size: 21px;
+    font-size: 16px;
+    color: rgb(201, 192, 193);
   }
+}
+
+.js_image {
+  background-color: purple;
+  height: 200px;
+  width: 150px;
+}
+
+.card-body {
+  background-color: purple;
 }
 .data {
   margin-left: 3%;
   display: grid;
   grid-template-columns: 30% 60%;
-  column-gap: 3%;
+  column-gap: 7%;
 
   .results {
     border: solid grey;
@@ -44,8 +55,13 @@
 
 .favorites {
   border: solid lightpink;
-  border-radius: 5px;
+  border-radius: 10px;
   text-align: center;
+  background-color: grey;
+  text-align: center;
+  color: rgb(117, 39, 39);
+  font-size: 25px;
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -57,7 +73,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin: 3% 2% 2% 2%;
+    margin: 15px;
     list-style: none;
 
     .fas {
@@ -68,4 +84,35 @@
       transform: scale(2);
     }
   }
+}
+
+.js_btnSearch {
+  width: 70px;
+  background-color: grey;
+  border-radius: 30px;
+  height: 35px;
+  margin-left: 1%;
+  color: rgb(82, 66, 75);
+  border: 2px solid pink;
+  cursor: pointer;
+  font-family: $font-titles;
+}
+.js_btnReset {
+  margin-bottom: 50px;
+  width: 70px;
+  background-color: grey;
+  border-radius: 30px;
+  height: 35px;
+  margin-left: 1%;
+  color: rgb(82, 66, 75);
+  border: 2px solid pink;
+  cursor: pointer;
+  font-family: $font-titles;
+}
+
+.form {
+  margin-left: 50px;
+}
+
+.favorites {
 }

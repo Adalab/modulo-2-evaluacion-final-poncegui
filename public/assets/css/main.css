@@ -20,14 +20,23 @@
 .styles {
   font-family: "Bangers", cursive; }
   .styles h5 {
-    font-size: 21px; }
+    font-size: 16px;
+    color: #c9c0c1; }
+
+.js_image {
+  background-color: purple;
+  height: 200px;
+  width: 150px; }
+
+.card-body {
+  background-color: purple; }
 
 .data {
   margin-left: 3%;
   display: grid;
   grid-template-columns: 30% 60%;
-  -moz-column-gap: 3%;
-  column-gap: 3%; }
+  -moz-column-gap: 7%;
+  column-gap: 7%; }
   .data .results {
     border: solid grey;
     border-radius: 10px; }
@@ -55,8 +64,12 @@
 
 .favorites {
   border: solid lightpink;
-  border-radius: 5px;
-  text-align: center; }
+  border-radius: 10px;
+  text-align: center;
+  background-color: grey;
+  text-align: center;
+  color: #752727;
+  font-size: 25px; }
   .favorites__container {
     display: flex;
     flex-direction: column; }
@@ -66,7 +79,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin: 3% 2% 2% 2%;
+    margin: 15px;
     list-style: none; }
     .favorites__list .fas {
       text-align: center;
@@ -74,6 +87,44 @@
       text-align: center;
       cursor: pointer;
       transform: scale(2); }
+
+.js_btnSearch {
+  width: 70px;
+  background-color: grey;
+  border-radius: 30px;
+  height: 35px;
+  margin-left: 1%;
+  color: #52424b;
+  border: 2px solid pink;
+  cursor: pointer;
+  font-family: "Bangers", cursive; }
+
+.js_btnReset {
+  margin-bottom: 50px;
+  width: 70px;
+  background-color: grey;
+  border-radius: 30px;
+  height: 35px;
+  margin-left: 1%;
+  color: #52424b;
+  border: 2px solid pink;
+  cursor: pointer;
+  font-family: "Bangers", cursive; }
+
+.form {
+  margin-left: 50px; }
+
+* {
+  background-color: #bd9393; }
+
+.header {
+  width: 100%; }
+
+.title {
+  font-family: "Bangers", cursive;
+  color: #ecd3d7;
+  font-size: 50px;
+  margin: 50px; }
 
 .footer {
   position: fixed;

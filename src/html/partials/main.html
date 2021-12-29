@@ -1,68 +1,63 @@
-
 <main class="styles">
 
-      <!-- BUSCADOR DE TV SHOWS -->
+    <!-- BUSCADOR DE TV SHOWS -->
 
     <form action="#" class="form js_form">
-      <input
-        class="form__input js_inputUser"
-        type="text"
-        placeholder="e. Dragon Ball"
-      />
-      <button class="form__btn js_btnSearch">Search</button>
-      <button class="reset__btn js_btnReset">Reset</button>
+        <input class="form__input js_inputUser" type="text" placeholder="e. Dragon Ball" />
+        <button class="form__btn js_btnSearch">Search</button>
+        <button class="reset__btn js_btnReset">Reset</button>
     </form>
 
 
-  <!-- LISTA DE FAVORITOS QUE AÑADIMOS "li" CON DOM AL "ul"-->
-  
-    <div class="data">
-      <div class="favorites js_favorites">
-        <h2 class="favorites__title">Favorites anime shows</h2>
-        <!-- <ul class="favorites__container js_favorites"> -->
+    <!-- LISTA DE FAVORITOS QUE AÑADIMOS "li" CON DOM AL "ul"-->
 
-        <!-- LISTA DE FAVORITOS QUE AÑADIMOS CON DOM -->
-        <template id="template-favorites" class="styles">
-            <div class="">
-              <div class="card_favorites">
-                <div class="card-body-favorites">
-                  <h5>Shows titles</h5>
-                    <img class="results__img js_image" src="" alt="" />
-                  <button class="add js-remove" >REMOVE</button>
+    <div class="data">
+        <div class="favorites js_favorites">
+            <h2 class="favorites__title">Favorites anime shows</h2>
+            <!-- <ul class="favorites__container js_favorites"> -->
+
+            <!-- LISTA DE FAVORITOS QUE AÑADIMOS CON DOM -->
+            <template id="template-favorites" class="styles">
+                <div class="">
+                    <div class="card_favorites">
+                        <div class="card-body-favorites">
+                            <h5>Shows titles</h5>
+                            <img class="results__img js_image" src="" alt="" />
+                            <button class="add js-remove">REMOVE</button>
+                        </div>
+                    </div>
                 </div>
-               </div>
-              </div>
-          </template>
-        <!-- </ul> -->
-     </div>
-      <section class="results">
-        <h2 class="results__tittle">tv Shows Results</h2>
-        <div class="results__container js_results">
+            </template>
+            <!-- </ul> -->
         </div>
-           <!-- <li class="results__list js_list"> -->
-            
+        <section class="results">
+            <h2 class="results__tittle">tv Shows Results</h2>
+            <div class="results__container js_results">
+            </div>
+            <!-- <li class="results__list js_list"> -->
+
             <h2 class="results__name js_name"></h2>
-           
-           
-           <div class="container">
-             <!-- <h1>tv Shows</h1> -->
-             <div class="row" id="items"></div>
-           </div>
-           
-           <!-- TEMPLATE PARA PINTAR EN DOM CON FRAGMENT -->
+
+
+            <div class="container">
+                <!-- <h1>tv Shows</h1> -->
+                <div class="row" id="items"></div>
+            </div>
+
+            <!-- TEMPLATE PARA PINTAR EN DOM CON FRAGMENT -->
 
             <template id="template-card" class="styles">
-              <div class="">
-                <div class="card">
-                  <div class="card-body">
-                    <h5>Shows titles</h5>
-                      <img class="results__img js_image" src="" alt="" />
-                    <button class="add js-favorite" >Add to favorite</button>
-                  </div>
-                 </div>
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Shows titles</h5>
+                            <img class="results__img js_image" src="" alt="" />
+                            <button class="add js-favorite">Add to favorite</button>
+                        </div>
+                    </div>
                 </div>
             </template>
 
-      </section>
+        </section>
     </div>
-  </main>
+</main>
