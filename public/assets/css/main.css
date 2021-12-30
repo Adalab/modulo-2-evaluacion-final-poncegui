@@ -114,6 +114,11 @@
 .form {
   margin-left: 50px; }
 
+.js-colors {
+  background-color: powderblue; }
+  .js-colors h5 {
+    color: blue; }
+
 * {
   background-color: #bd9393; }
 

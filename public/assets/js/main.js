@@ -3,21 +3,31 @@
 
 // ****************************************************************************
 // Preguntas SOPORTE;
-// PORQUÉ NO FUNCIONA SIN HTTP
-  //Cómo añadir la url de la imagen al objeto creadoo; la coge pero no la muestra
+// No funciona Api sin http; probar metiendolo en una variable
+// ¿puedo dejar el boton añadir a favoritos o debe ser solo pinchando imagen? 
+// preguntar si esta bien usar las funciones flecha en los listener directamente o hay que separarlas
+
+
   
   
   // ****************************************************************************
     // Pendientes;
+    // parte #3 Cambiar color a las tarjetas
+    // añadir condicionales si no encuentra la busqueda
+    // parte #4 local Storage
     // Crear mensaje por si no encuentra la series
-    // Añadir replace a las búsquedas sin imagenes
+    // parte #2 Añadir replace a las búsquedas sin imagenes
+    // Resetear placeholder y añadir comenzar funcion a la búsqueda (ahora solo funciona si no pongo reiniciar funcion)
+    // parte #5 Crear botón limpiar favorito y favoritos
+    // Limpiar HTML
+    // parte #6 sass 
 
 
 //GLOBAL VARIABLES
 const input = document.querySelector(".js_inputUser");
 const btnSearch = document.querySelector(".js_btnSearch");
-const btnReset = document.querySelector(".js_btnReset");
-const btnRemoveFav = document.querySelectorAll(".js-remove");
+let colors = document.querySelector(".card-body")
+
 
 
 //VARIABLES USED TO RENDER DOM WITH FRAGMENT 
@@ -56,6 +66,7 @@ function handleSearch(ev){
 //RENDER PART #2  *inyect search user results & clear list
 
 function renderAnimeTvShows(){
+    // listMovies.innerHTML="";
     tvSerieslist.forEach(choice => {
         templateCard.querySelector("h5").textContent = choice.title
         templateCard.querySelector("img").setAttribute("src", choice.image_url)
@@ -70,9 +81,12 @@ function renderAnimeTvShows(){
 
 
     //Clear search user
+    const btnReset = document.querySelector(".js_btnReset");
     btnReset.addEventListener("click", (ev) => {
         ev.preventDefault
         listMovies.innerHTML="";
+        // renderAnimeTvShows();
+        // handleSearch(ev);
     
     })
   
@@ -81,16 +95,18 @@ function renderAnimeTvShows(){
 
 //RENDER PART #3   *create a favorite list
 
-// ***Looking for btn selected***
-
+// ***Looking for btn selected and data to create a new objet***
 const favorite = ev => {
     if(ev.target.classList.contains("js-favorite")){
-    setFavorite(ev.target.parentElement)}
+    setFavorite(ev.target.parentElement);
+    }
     ev.stopPropagation()
+    console.log(ev.target.parentElement)
+  
 }
+// console.log(setFavorite)
 
-
-// ***Need create a new object with "id" and add it to favorite list***
+// ***New object with "id" and add it to favorite list***
 const setFavorite = newObject => {
     const movieFav = {
         id: newObject.querySelector(".js-favorite").dataset.id,
@@ -99,6 +115,7 @@ const setFavorite = newObject => {
         
     }
 
+  console.log(movieFav)
 // ***New objet is pushed into "fav"
     fav[movieFav] = {...movieFav}
     renderFav()
@@ -107,30 +124,35 @@ const setFavorite = newObject => {
 
 
 // ***Render new objet into fav list
-
 const renderFav = () => {
-
-    // console.log(fav);
-    // console.dir(fav);
+    // listFav.innerHTML ="";
     Object.values(fav).forEach(movieFav => {
         templateFavorites.querySelector("h5").textContent = movieFav.title
-
-        const clone2 = templateFavorites.cloneNode(true)
-        fragmentList.appendChild(clone2)
+        templateFavorites.querySelector("img").src = movieFav.image_url
+        const clone = templateFavorites.cloneNode(true)
+        fragmentList.appendChild(clone)
     })
 
     listFav.appendChild(fragmentList)
     console.log(listFav)
-   
-    // btnRemoveFav.addEventListener("click", () => {
-    //     listFav.innerHTML="";
-    
-    // })
 
-     
+    //Clear search user
+  const clearFav = document.querySelector(".js-remove")
+  clearFav.addEventListener("click", () => {
+    console.log("funciona")
+    listFav.innerHTML ="";
+  })
 }
+    
+    
+  
+   
+   
+    
+
 
  //Clear fav movie selected
+
 
 
 //LISTENERS
