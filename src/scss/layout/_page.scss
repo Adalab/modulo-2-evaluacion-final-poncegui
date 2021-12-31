@@ -2,19 +2,22 @@
   font-family: $font-titles;
   h5 {
     font-size: 16px;
-    color: rgb(201, 192, 193);
+    color: $color-mainFonts;
   }
 }
-
+.js_inputUser {
+  color: $color-mainFonts;
+  font-family: $font-titles;
+}
 .js_image {
-  background-color: purple;
+  background-color: rgb(201, 218, 110);
   height: 200px;
   width: 150px;
 }
 
-.card-body {
-  background-color: purple;
-}
+// .card-body {
+//   background-color: purple;
+// }
 .data {
   margin-left: 3%;
   display: grid;
@@ -27,7 +30,7 @@
     &__tittle {
       background-color: grey;
       text-align: center;
-      color: rgb(117, 39, 39);
+      color: $color-mainFonts;
       font-size: 32px;
     }
     &__container {
@@ -59,8 +62,8 @@
   text-align: center;
   background-color: grey;
   text-align: center;
-  color: rgb(117, 39, 39);
-  font-size: 25px;
+  color: rgb(179, 81, 162);
+  font-size: 21px;
 
   &__container {
     display: flex;
@@ -92,8 +95,8 @@
   border-radius: 30px;
   height: 35px;
   margin-left: 1%;
-  color: rgb(82, 66, 75);
-  border: 2px solid pink;
+  color: $color-mainFonts;
+  border: 2px solid rgb(209, 209, 139);
   cursor: pointer;
   font-family: $font-titles;
 }
@@ -113,12 +116,20 @@
 .form {
   margin-left: 50px;
 }
-
+.js-messageError {
+  color: $color-mainFonts;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 75px;
+}
 ///JS to replace bkg and tittle colors PART #3
 
 .js-colors {
   h5 {
-    color: blue;
+    color: purple;
+    font-size: 21px;
   }
-  background-color: powderblue;
+
+  border: 2px solid purple;
 }

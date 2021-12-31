@@ -13,7 +13,7 @@
 
     <div class="data">
         <div class="favorites js_favorites">
-            <h2 class="favorites__title">Favorites anime shows</h2>
+            <h2 class="favorites__title">Favorites</h2>
     
 
             <!-- LISTA DE FAVORITOS QUE AÑADIMOS CON DOM -->
@@ -26,7 +26,7 @@
                         </div>
                     </div>
             </template>
-
+            <button class="add js-removeAll">remove all</button>
         </div>
         <section class="results">
             <h2 class="results__tittle">tv Shows Results</h2>
@@ -35,7 +35,7 @@
        
 
             <h2 class="results__name js_name"></h2>
-
+            <h3 class="js-messageError"></h3>
 
             <div class="container">
                 <!-- <h1>tv Shows</h1> -->
@@ -43,7 +43,7 @@
             </div>
 
             <!-- TEMPLATE PARA PINTAR EN DOM CON FRAGMENT -->
-
+            
             <template id="template-card" class="styles">
                     <div class="card">
                         <div class="card-body">

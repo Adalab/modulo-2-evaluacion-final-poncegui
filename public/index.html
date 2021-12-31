@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Anime tv shows</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Merriweather:wght@900&family=Montserrat:wght@100;700&family=Open+Sans:ital,wght@0,300;0,600;1,600&family=VT323&display=swap" rel="stylesheet">
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chakra+Petch:wght@300&family=Merriweather:wght@900&family=Montserrat:wght@100;700&family=Open+Sans:ital,wght@0,300;0,600;1,600&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="icon" href="./assets/images/favicon.png" />
   </head>
@@ -31,7 +32,7 @@
 
           <div class="data">
               <div class="favorites js_favorites">
-                  <h2 class="favorites__title">Favorites anime shows</h2>
+                  <h2 class="favorites__title">Favorites</h2>
           
 
                   <!-- LISTA DE FAVORITOS QUE AÑADIMOS CON DOM -->
@@ -44,7 +45,7 @@
                               </div>
                           </div>
                   </template>
-
+                  <button class="add js-removeAll">remove all</button>
               </div>
               <section class="results">
                   <h2 class="results__tittle">tv Shows Results</h2>
@@ -53,7 +54,7 @@
              
 
                   <h2 class="results__name js_name"></h2>
-
+                  <h3 class="js-messageError"></h3>
 
                   <div class="container">
                       <!-- <h1>tv Shows</h1> -->
@@ -61,7 +62,7 @@
                   </div>
 
                   <!-- TEMPLATE PARA PINTAR EN DOM CON FRAGMENT -->
-
+                  
                   <template id="template-card" class="styles">
                           <div class="card">
                               <div class="card-body">

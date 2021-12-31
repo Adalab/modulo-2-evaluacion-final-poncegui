@@ -18,18 +18,19 @@
   color: #000; }
 
 .styles {
-  font-family: "Bangers", cursive; }
+  font-family: "Chakra Petch", sans-serif; }
   .styles h5 {
     font-size: 16px;
-    color: #c9c0c1; }
+    color: #d1db3b; }
+
+.js_inputUser {
+  color: #d1db3b;
+  font-family: "Chakra Petch", sans-serif; }
 
 .js_image {
-  background-color: purple;
+  background-color: #c9da6e;
   height: 200px;
   width: 150px; }
-
-.card-body {
-  background-color: purple; }
 
 .data {
   margin-left: 3%;
@@ -43,7 +44,7 @@
     .data .results__tittle {
       background-color: grey;
       text-align: center;
-      color: #752727;
+      color: #d1db3b;
       font-size: 32px; }
     .data .results__container {
       grid-column: 2 / 3;
@@ -68,8 +69,8 @@
   text-align: center;
   background-color: grey;
   text-align: center;
-  color: #752727;
-  font-size: 25px; }
+  color: #b351a2;
+  font-size: 21px; }
   .favorites__container {
     display: flex;
     flex-direction: column; }
@@ -94,10 +95,10 @@
   border-radius: 30px;
   height: 35px;
   margin-left: 1%;
-  color: #52424b;
-  border: 2px solid pink;
+  color: #d1db3b;
+  border: 2px solid #d1d18b;
   cursor: pointer;
-  font-family: "Bangers", cursive; }
+  font-family: "Chakra Petch", sans-serif; }
 
 .js_btnReset {
   margin-bottom: 50px;
@@ -109,25 +110,33 @@
   color: #52424b;
   border: 2px solid pink;
   cursor: pointer;
-  font-family: "Bangers", cursive; }
+  font-family: "Chakra Petch", sans-serif; }
 
 .form {
   margin-left: 50px; }
 
+.js-messageError {
+  color: #d1db3b;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 75px; }
+
 .js-colors {
-  background-color: powderblue; }
+  border: 2px solid purple; }
   .js-colors h5 {
-    color: blue; }
+    color: purple;
+    font-size: 21px; }
 
 * {
-  background-color: #bd9393; }
+  background-color: #0e0404; }
 
 .header {
   width: 100%; }
 
 .title {
-  font-family: "Bangers", cursive;
-  color: #ecd3d7;
+  font-family: "Chakra Petch", sans-serif;
+  color: #d1db3b;
   font-size: 50px;
   margin: 50px; }
 
