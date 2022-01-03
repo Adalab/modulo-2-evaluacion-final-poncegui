@@ -12,7 +12,7 @@ const listFavDom = document.querySelector(".js_favorites");
 let tvSerieslist = [];
 let fav = [];
 
-//FETCH Part #1
+//Part #1; FETCH 
 function handleSearch(ev){
     ev.preventDefault();
     const inputUser = input.value;
@@ -37,18 +37,20 @@ function renderError(){
 
 //RENDER Part #2  *user results & clear list
 function renderAnimeTvShows(){
-   
     listContainer.innerHTML="";
-     tvSerieslist.forEach(choice => {
-        const replaceImg = choice.image_url.replace(imageError)
-       listContainer.innerHTML += `<li class="js_results js-eachCard" data-id="${choice.mal_id}"> <img class="movie_img" src= ${replaceImg}" alt="anime show"  <h3 class="movie_title">${choice.title}</h3> </li>`;           
+    
+    tvSerieslist.forEach(choice => {
+    const replaceImg = choice.image_url.replace(imageError)
+    listContainer.innerHTML +=`<li class="js_results js-eachCard" data-id="${choice.mal_id}"> 
+                                <img class="movie_img" src= ${replaceImg}" alt="anime show"  
+                                <h3 class="movie_title">${choice.title}</h3> </li>`;           
     })       
           
-
-
      listenEachCard(); 
 }
 
+
+//Reset search user & fail search
 const btnReset = document.querySelector(".js_btnReset");
 btnReset.addEventListener("click", (ev) => {
     ev.preventDefault
@@ -59,9 +61,9 @@ btnReset.addEventListener("click", (ev) => {
 
 
 //RENDER Part #3   *create a favorite list
-// looking for click
+// looking for "click"
 const listenEachCard = () => {
-    const cards = document.querySelectorAll(".js-eachCard");
+    let cards = document.querySelectorAll(".js-eachCard");
     for (const card of cards){
         card.addEventListener("click",handleAddCardFav)
     }   
@@ -76,8 +78,8 @@ const handleAddCardFav = (favorite) => {
         changeColor.classList.toggle("js_colors");
         changeColor.classList.remove("js_results");
 
-
-        // if (changeColor contains.(js_colors)){}
+   
+        // if (changeColor.classLIs contains.(js_colors)){}
         const lookingClickedObject = tvSerieslist.find(
             (favoriteId) => favoriteId.mal_id === favClickedId);
        
@@ -90,11 +92,16 @@ const handleAddCardFav = (favorite) => {
 
         if (selectedFav === undefined) {
             fav.push(lookingClickedObject);
-            renderFav();
-            setLocalStorageFav();
-        }    
+          } else {
+            const removeFavFromList = fav.findIndex(id => id.mal_id === favClickedId);
+            fav.splice(removeFavFromList,1);
+          }
+
+          renderFav(fav)
+          setLocalStorageFav(); 
         
 };
+
 
 // Part #3.3 
 // Render fav list by DOM
@@ -109,7 +116,7 @@ const renderFav = () => {
         const btnFav = document.createElement("btn");
         btnFav.classList.add("js_favorites__childs");
 
-          titleFav.textContent = favMovie.title
+            titleFav.textContent = favMovie.title
             imgFav.src = favMovie.image_url
             imgFav.alt = favMovie.title
             btnFav.textContent = "x"
@@ -120,7 +127,7 @@ const renderFav = () => {
             listFavDom.appendChild(btnFav)
         })
 
-        // reset full list favorites
+        // BONUS Part #5.2 Reset full list favorites
         const btnResetFav = document.querySelector(".js_resetFav");
         btnResetFav.addEventListener("click", (ev) => {
             ev.preventDefault
@@ -132,7 +139,7 @@ const renderFav = () => {
         listenRemoveFav();      
 }       
 
-// Remove fav one by one
+// BONUS Part #5.1 Remove fav one by one
 const listenRemoveFav = () =>{
     if (fav.length > 0){
         const btnRemoveFav = document.querySelectorAll(".js_favorites__childs");
@@ -150,8 +157,8 @@ const handleRemoveFavCard = (remove) => {
     setLocalStorageFav(); 
 }   
  
-// LOCAL STORAGE; Part #4
-  
+
+// Part #4; LOCAL STORAGE
     const setLocalStorageFav = () => {
         const stringifytvSeriesFav = JSON.stringify(fav);
         localStorage.setItem("fav", stringifytvSeriesFav); 
@@ -160,7 +167,7 @@ const handleRemoveFavCard = (remove) => {
     const getLocalstorageFav = () => {
         const localStorageTvSeriesFav = localStorage.getItem("fav");
         if (localStorageTvSeriesFav !== null) {
-           fav = JSON.parse(localStorageTvSeriesFav);
+        fav = JSON.parse(localStorageTvSeriesFav);
         }
         renderFav();
     };
