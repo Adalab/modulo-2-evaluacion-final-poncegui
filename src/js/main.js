@@ -44,17 +44,19 @@ function renderAnimeTvShows(){
        listContainer.innerHTML += `<li class="js_results js-eachCard" data-id="${choice.mal_id}"> <img class="movie_img" src= ${replaceImg}" alt="anime show"  <h3 class="movie_title">${choice.title}</h3> </li>`;           
     })       
           
-    // Reset search user
-    const btnReset = document.querySelector(".js_btnReset");
-    btnReset.addEventListener("click", (ev) => {
-        ev.preventDefault
-        listContainer.innerHTML="";
-        input.value="";
-        messageError.innerHTML ="";   
-    })
+
 
      listenEachCard(); 
 }
+
+const btnReset = document.querySelector(".js_btnReset");
+btnReset.addEventListener("click", (ev) => {
+    ev.preventDefault
+    listContainer.innerHTML="";
+    input.value="";
+    messageError.innerHTML ="";   
+})
+
 
 //RENDER Part #3   *create a favorite list
 // looking for click

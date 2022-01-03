@@ -16,8 +16,8 @@
     <div class="page">
       
         
-      <header class="page__header">
-        <h1 class="title">Buscador de Series</h1>
+      <header class="header">
+        <h1 class="title">Anime shows</h1>
       </header>
       
         
@@ -27,34 +27,23 @@
               <input class="form__input js_inputUser" type="text" placeholder="e. Dragon Ball" />
               <button class="form__btn js_btnSearch">Search</button>
               <button class="reset__btn js_btnReset">Reset search</button>
-              <button class="reset__btn js_resetFav">Reset favorites</button>
           </form>
 
-          <div class="data">
-            <aside class="favorites">
-              <h2 class="favorites__tittle">Series Favoritas</h2>
+          <button class="reset__btn js_resetFav">Reset favorites</button>
+          <div class="movies">
+            <section class="favorites">
+              <h2 class="favorites__title">Favorites animes</h2>
               <ul class="favorites__container js_favorites">
-                <!-- <li class="results__fav js_fav">
-            
-                    <img
-                      class="resultsfav__img js_favimage"
-                      src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"
-                      alt=""
-                    />
-                    <h2 class="resultsfav__name js_favname"></h2>
-                  
-                </li> -->
+              <!-- list inyect by innerHTML -->
               </ul>
-            </aside>
+            </section>
+
+
             <section class="results">
-              <h2 class="title__results">Resultados</h2>
-              <h3 class="js-messageError"></h3>
+              <h2 class="results__title">Results</h2>
+              <h3 class="results__message  js_messageError"></h3>
               <ul class="results__container js_results">
-                <!--  <li class="results__list js_list">
-                    <img class="results__img js_image" src="" alt="" />
-                  <h2 class="results__name js_name"></h2>
-                
-                </li> -->
+             <!-- list inyect by DOM --> 
               </ul>
             </section>
           </div>
