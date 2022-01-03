@@ -14,69 +14,54 @@
 
   <body>
     <div class="page">
-      <header class="header">
-          <h1 class="title">Anime tv shows</h1>
-        </header>
-      <main class="styles">
-
-          <!-- BUSCADOR DE TV SHOWS -->
-
+      
+        
+      <header class="page__header">
+        <h1 class="title">Buscador de Series</h1>
+      </header>
+      
+        
+      <main class="main">
+       
           <form action="#" class="form js_form">
               <input class="form__input js_inputUser" type="text" placeholder="e. Dragon Ball" />
               <button class="form__btn js_btnSearch">Search</button>
-              <button class="reset__btn js_btnReset">Reset</button>
+              <button class="reset__btn js_btnReset">Reset search</button>
+              <button class="reset__btn js_resetFav">Reset favorites</button>
           </form>
 
-
-          <!-- LISTA DE FAVORITOS QUE AÑADIMOS "li" CON DOM AL "ul"-->
-
           <div class="data">
-              <div class="favorites js_favorites">
-                  <h2 class="favorites__title">Favorites</h2>
-          
-
-                  <!-- LISTA DE FAVORITOS QUE AÑADIMOS CON DOM -->
-                  <template id="template-favorites" class="styles">
-                          <div class="card_favorites">
-                              <div class="card-body-favorites">
-                                  <h5>Shows titles</h5>
-                                  <img class="results__img js_image" src="" alt="" />
-                                  <button class="add js-remove">REMOVE</button>
-                              </div>
-                          </div>
-                  </template>
-                  <button class="add js-removeAll">remove all</button>
-              </div>
-              <section class="results">
-                  <h2 class="results__tittle">tv Shows Results</h2>
-                  <div class="results__container js_results">
-                  </div>
-             
-
-                  <h2 class="results__name js_name"></h2>
-                  <h3 class="js-messageError"></h3>
-
-                  <div class="container">
-                      <!-- <h1>tv Shows</h1> -->
-                      <div class="row" id="items"></div>
-                  </div>
-
-                  <!-- TEMPLATE PARA PINTAR EN DOM CON FRAGMENT -->
+            <aside class="favorites">
+              <h2 class="favorites__tittle">Series Favoritas</h2>
+              <ul class="favorites__container js_favorites">
+                <!-- <li class="results__fav js_fav">
+            
+                    <img
+                      class="resultsfav__img js_favimage"
+                      src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"
+                      alt=""
+                    />
+                    <h2 class="resultsfav__name js_favname"></h2>
                   
-                  <template id="template-card" class="styles">
-                          <div class="card">
-                              <div class="card-body">
-                                  <h5>Shows titles</h5>
-                                  <img class="results__img js_image" src="" alt="" />
-                                  <button class="add js-favorite">Add to favorite</button>
-                              </div>
-                          </div>
-                  </template>
-
-              </section>
+                </li> -->
+              </ul>
+            </aside>
+            <section class="results">
+              <h2 class="title__results">Resultados</h2>
+              <h3 class="js-messageError"></h3>
+              <ul class="results__container js_results">
+                <!--  <li class="results__list js_list">
+                    <img class="results__img js_image" src="" alt="" />
+                  <h2 class="results__name js_name"></h2>
+                
+                </li> -->
+              </ul>
+            </section>
           </div>
-      </main>
-      
+        </main>
+      <footer class="page__footer">
+          <small> &copy; Poncegui 2022 </small>
+        </footer>
     </div>
     <script src="./assets/js/main.js"></script>
   </body>

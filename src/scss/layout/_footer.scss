@@ -1,8 +1,11 @@
-.footer {
+.page__footer {
   position: fixed;
-  left: 0;
   bottom: 0;
-  width: 100vw;
-  padding: 1rem;
+  height: 10vh;
+  width: 100%;
+  padding: 25px;
+  font-family: $font-text;
   color: $color-secondary;
+
+  right: 0;
 }

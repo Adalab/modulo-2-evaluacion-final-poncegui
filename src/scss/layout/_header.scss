@@ -1,12 +1,12 @@
 * {
-  background-color: rgb(14, 4, 4);
+  background-color: $backGround;
 }
 .header {
   width: 100%;
 }
 .title {
-  font-family: $font-titles;
-  color: rgb(209, 219, 59);
-  font-size: 50px;
-  margin: 50px;
+  font-family: $font-text;
+  color: rgb(149, 223, 75);
+  font-size: 40px;
+  margin: 30px;
 }

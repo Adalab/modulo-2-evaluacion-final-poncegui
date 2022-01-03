@@ -4,25 +4,19 @@
 const input = document.querySelector(".js_inputUser");
 const btnSearch = document.querySelector(".js_btnSearch");
 const imageError = "https://via.placeholder.com/100x75?text=Ups!+we+are+not+perfect";
-const colors = document.querySelectorAll(".js-favorite");
-const messageError = document.querySelector(".js-messageError");
-
-//VARIABLES USED TO RENDER DOM WITH FRAGMENT 
-const templateFavorites = document.getElementById("template-favorites").content
-const templateCard = document.getElementById("template-card").content
-const fragmentList = document.createDocumentFragment();
-const listMovies =document.querySelector(".js_results");
-const listFav =document.querySelector(".js_favorites");
+const messageError = document.querySelector(".js_messageError");
+const listContainer = document.querySelector(".js_results");
+const listFavDom = document.querySelector(".js_favorites");
 
 //ARRAYS
 let tvSerieslist = [];
 let fav = [];
 
-
 //FETCH Part #1
 function handleSearch(ev){
     ev.preventDefault();
     const inputUser = input.value;
+    listContainer.innerHTML = "";
 
     fetch(`https://api.jikan.moe/v3/search/anime?q=`+ inputUser)
     .then(response => response.json())
@@ -31,120 +25,148 @@ function handleSearch(ev){
         if (tvSerieslist == undefined) {
             renderError();
             input.value="";
-            handleSearch(ev);  
-
         } else 
         renderAnimeTvShows();    
     });
 }  
 
+// fail search user
 function renderError(){
     messageError.innerHTML ="Sorry! not found. Let's try another movie";
 }
 
 //RENDER Part #2  *user results & clear list
 function renderAnimeTvShows(){
-    listMovies.innerHTML="";
+   
+    listContainer.innerHTML="";
+     tvSerieslist.forEach(choice => {
+        const replaceImg = choice.image_url.replace(imageError)
+       listContainer.innerHTML += `<li class="js_results js-eachCard" data-id="${choice.mal_id}"> <img class="movie_img" src= ${replaceImg}" alt="anime show"  <h3 class="movie_title">${choice.title}</h3> </li>`;           
+    })       
+          
+    // Reset search user
+    const btnReset = document.querySelector(".js_btnReset");
+    btnReset.addEventListener("click", (ev) => {
+        ev.preventDefault
+        listContainer.innerHTML="";
+        input.value="";
+        messageError.innerHTML ="";   
+    })
 
-            tvSerieslist.forEach(choice => { 
-                    templateCard.querySelector("h5").textContent = choice.title
-                    templateCard.querySelector("img").setAttribute("src", choice.image_url)
-                    templateCard.querySelector(".js-favorite").dataset.id = choice.mal_id
-            
-                const clone = templateCard.cloneNode(true)
-                fragmentList.appendChild(clone)
-            })
-
-            listMovies.appendChild(fragmentList)
-            console.log(fragmentList)
-
-            //Clear search user
-            const btnReset = document.querySelector(".js_btnReset");
-            btnReset.addEventListener("click", (ev) => {
-                ev.preventDefault
-                listMovies.innerHTML="";
-                input.value="";
-                messageError.innerHTML ="";
-                
-               
-            })
-
+     listenEachCard(); 
 }
 
 //RENDER Part #3   *create a favorite list
-// ***Change colors***
-const favorite = ev => {
-    if(ev.target.classList.contains("js-favorite")){
-    setFavorite(ev.target.parentElement);
-    }
-    const changeColor = ev.target.parentElement;
-    changeColor.classList.toggle("js-colors")
-    ev.stopPropagation() 
+// looking for click
+const listenEachCard = () => {
+    const cards = document.querySelectorAll(".js-eachCard");
+    for (const card of cards){
+        card.addEventListener("click",handleAddCardFav)
+    }   
 }
 
-// ***New object with "id" and add it to favorite list***
-const setFavorite = newObject => {
-    const movieFav = {
-        id: newObject.querySelector(".js-favorite").dataset.id,
-        title: newObject.querySelector("h5").textContent,
-        image_url: newObject.querySelector("img").src,        
-    }
+// Part #3.1 
+// Check if fav is already included & change display colors
+const handleAddCardFav = (favorite) => {
+ 
+        const favClickedId = parseInt(favorite.currentTarget.dataset.id)
+        const changeColor = favorite.target.parentElement;
+        changeColor.classList.toggle("js_colors");
+        changeColor.classList.remove("js_results");
 
-// ***New objet is pushed into "fav"
-    fav[movieFav] = {...movieFav}
-    renderFav()
-}
 
-// ***Push new objet into fav list
-const renderFav = () => {
-    // listFav.innerHTML ="";
-    Object.values(fav).forEach(movieFav => {
-        templateFavorites.querySelector("h5").textContent = movieFav.title
-        templateFavorites.querySelector("img").src = movieFav.image_url
-        const clone = templateFavorites.cloneNode(true)
-        fragmentList.appendChild(clone)
-    })
-
-    listFav.appendChild(fragmentList)
-    console.log(listFav)
+        // if (changeColor contains.(js_colors)){}
+        const lookingClickedObject = tvSerieslist.find(
+            (favoriteId) => favoriteId.mal_id === favClickedId);
+       
+        const selectedFav = fav.find(
+            (eachFav) => eachFav.mal_id === favClickedId);    
     
+// Part #3.2
+// Push fav object into fav list
 
-    // BONUS Part #5; Clear full list of favorites
-    const btnRemoveAllFav = document.querySelector(".js-removeAll");
-    btnRemoveAllFav.addEventListener("click", () => {
-    listFav.innerHTML ="";
-  })
 
-}
+        if (selectedFav === undefined) {
+            fav.push(lookingClickedObject);
+            renderFav();
+            setLocalStorageFav();
+        }    
+        
+};
+
+// Part #3.3 
+// Render fav list by DOM
+
+const renderFav = () => {     
+    listFavDom.innerHTML = '';
     
+    Object.values(fav).forEach(favMovie =>{
+        const titleFav = document.createElement("li");
+        titleFav.classList.add("js_favorites__title");
+        const imgFav = document.createElement("img");
+        const btnFav = document.createElement("btn");
+        btnFav.classList.add("js_favorites__childs");
 
+          titleFav.textContent = favMovie.title
+            imgFav.src = favMovie.image_url
+            imgFav.alt = favMovie.title
+            btnFav.textContent = "x"
+            btnFav.dataset.id = favMovie.mal_id
+            
+            listFavDom.appendChild(titleFav)
+            listFavDom.appendChild(imgFav)
+            listFavDom.appendChild(btnFav)
+        })
+
+        // reset full list favorites
+        const btnResetFav = document.querySelector(".js_resetFav");
+        btnResetFav.addEventListener("click", (ev) => {
+            ev.preventDefault
+            listFavDom.innerHTML="";
+            fav.splice(0, fav.length)
+            setLocalStorageFav();
+        })
+
+        listenRemoveFav();      
+}       
+
+// Remove fav one by one
+const listenRemoveFav = () =>{
+    if (fav.length > 0){
+        const btnRemoveFav = document.querySelectorAll(".js_favorites__childs");
+        for (const eachBtnRemove of btnRemoveFav)
+        eachBtnRemove.addEventListener("click",handleRemoveFavCard)
+    }
+}
+
+const handleRemoveFavCard = (remove) => {
+    const removeClickedFav = parseInt(remove.currentTarget.dataset.id)
+    const removeFavFromList = fav.findIndex(id => id.mal_id === removeClickedFav);
+    fav.splice(removeFavFromList,1);
+
+    renderFav(fav)
+    setLocalStorageFav(); 
+}   
+ 
 // LOCAL STORAGE; Part #4
   
+    const setLocalStorageFav = () => {
+        const stringifytvSeriesFav = JSON.stringify(fav);
+        localStorage.setItem("fav", stringifytvSeriesFav); 
+    };
+
     const getLocalstorageFav = () => {
         const localStorageTvSeriesFav = localStorage.getItem("fav");
         if (localStorageTvSeriesFav !== null) {
            fav = JSON.parse(localStorageTvSeriesFav);
         }
+        renderFav();
     };
 
-   
     getLocalstorageFav();
+   
 
-
-    const setLocalStorageFav = () => {
-        const stringifytvSeriesFav = JSON.stringify(fav);
-        localStorage.setItem("fav", stringifytvSeriesFav);
-    };
-
-    setLocalStorageFav();
-    console.log(fav)
-
-
-
-//LISTENERS
-
+// //LISTENERS
 btnSearch.addEventListener("click", handleSearch);
-listMovies.addEventListener("click", ev => {
-    favorite(ev)
-   })
+
 
