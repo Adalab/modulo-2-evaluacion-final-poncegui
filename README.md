@@ -9,3 +9,5 @@ If you want to see the demo follow this link; http://beta.adalab.es/modulo-2-eva
 Copy this code and type "git clone" on your terminal
 You need install node.js. 
 To run it, just type and execute "nmp install".
+#General 
+This web app is only available for devices starting 768px. Responsive does not work for mobile devices.
