@@ -39,19 +39,15 @@ function renderError(){
 function renderAnimeTvShows(){
     listContainer.innerHTML="";
 
-
     tvSerieslist.forEach(choice => {
     const replaceImg = choice.image_url.replace(imageError)
     listContainer.innerHTML +=`<li class="js_results js-eachCard" data-id="${choice.mal_id}"> 
                                 <img class="movie_img" src= ${replaceImg}" alt="anime show"  
                                 <h3 class="movie_title">${choice.title}</h3> </li>`;    
-                                
-                                
-                    
+                                      
     })       
           
      listenEachCard(); 
-
 
      // Keep favorite class after reset
      const listUser = document.getElementsByClassName("js-eachCard");
@@ -94,7 +90,6 @@ const handleAddCardFav = (favorite) => {
         changeColor.classList.toggle("js_colors");
         changeColor.classList.toggle("js_results");
       
-
         const lookingClickedObject = tvSerieslist.find(
             (favoriteId) => favoriteId.mal_id === favClickedId);
        
@@ -105,19 +100,15 @@ const handleAddCardFav = (favorite) => {
 // Part #3.2
 // Push fav object into fav list & remove if it is unselected on searching list
 
-
         if (selectedFav === undefined) {
             fav.push(lookingClickedObject);
           } else {
             const removeFavFromList = fav.findIndex(id => id.mal_id === favClickedId);
             fav.splice(removeFavFromList,1);
-            // listUser.classList.add("js-eachCard");
           }
 
         renderFav(fav)
         setLocalStorageFav(); 
-
-        
 };
 
 // Part #3.3 
@@ -152,11 +143,9 @@ const renderFav = () => {
             fav.splice(0, fav.length)
             setLocalStorageFav();
             renderAnimeTvShows();
-            
 
         })
 
-        // renderAnimeTvShows();
         listenRemoveFav();      
 }       
 
