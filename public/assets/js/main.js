@@ -93,7 +93,7 @@ const handleAddCardFav = (favorite) => {
         const changeColor = favorite.target.parentElement;
         changeColor.classList.toggle("js_colors");
         changeColor.classList.toggle("js_results");
-        const listUser = document.getElementsByClassName("js-eachCard");
+        // const listUser = document.getElementsByClassName("js-eachCard");
 
         const lookingClickedObject = tvSerieslist.find(
             (favoriteId) => favoriteId.mal_id === favClickedId);
@@ -116,6 +116,7 @@ const handleAddCardFav = (favorite) => {
 
         renderFav(fav)
         setLocalStorageFav(); 
+
         
 };
 
@@ -171,6 +172,7 @@ const handleRemoveFavCard = (remove) => {
 
     renderFav(fav)
     setLocalStorageFav(); 
+    renderAnimeTvShows();
 }   
  
 // Part #4; LOCAL STORAGE
