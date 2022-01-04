@@ -37,7 +37,7 @@
     .form__input ::placeholder {
       color: #fafafa; }
     .form__input ::value {
-      color: #f3f313; }
+      color: #a240a5; }
   .form__btn {
     margin-bottom: 50px;
     width: 70px;
@@ -50,8 +50,7 @@
     cursor: pointer;
     font-family: "Chakra Petch", sans-serif; }
   .form__btn:hover {
-    background-color: grey;
-    color: white; }
+    background-color: #a240a5; }
 
 .reset__btn {
   margin-bottom: 30px;
@@ -65,8 +64,25 @@
   cursor: pointer;
   font-family: "Chakra Petch", sans-serif; }
   .reset__btn__btn:hover {
-    background-color: #1a6783;
-    color: #272020; }
+    background-color: #1a6783; }
+
+.js_resetFav:hover {
+  background-color: #1a6783; }
+
+.js_btnReset {
+  margin-bottom: 30px;
+  width: 110px;
+  background-color: #1a6783;
+  border-radius: 30px;
+  height: 35px;
+  margin-left: 1%;
+  color: white;
+  box-shadow: #1a6783;
+  cursor: pointer;
+  font-family: "Chakra Petch", sans-serif; }
+
+.js_btnReset:hover {
+  background-color: #a240a5; }
 
 .movies {
   margin-left: 15px;
@@ -136,10 +152,6 @@
       background-color: #a240a5;
       border: 2px solid #a240a5; }
 
-ul {
-  margin: 30px;
-  text-align: center; }
-
 .js_results li {
   font-size: 20px;
   color: #296b97;
@@ -172,9 +184,11 @@ ul {
   border-radius: 50px;
   box-shadow: #a240a5;
   cursor: pointer;
-  position: relative;
-  translate: 50px;
-  transform: translateY(-140px); }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 10px; }
   @media (max-width: 768px) {
     .js_favorites__childs {
       position: relative;
@@ -184,7 +198,8 @@ ul {
 .js_favorites__childs:hover {
   width: 30px;
   height: 30px;
-  box-shadow: #9abd78; }
+  font-size: 20px;
+  box-shadow: #a240a5; }
 
 .js_favorites__title {
   list-style: none;
@@ -194,16 +209,15 @@ ul {
   color: #a240a5; }
 
 .js-eachCard {
-  color: #9abd78;
+  color: #a240a5;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
-  height: 350px;
-  width: 250px;
-  padding: 10px; }
+  align-items: center;
+  padding: 10px;
+  margin-top: 25px; }
   @media (max-width: 768px) {
     .js-eachCard {
-      margin-top: 30px;
       text-align: center; } }
 
 .movie_img {
