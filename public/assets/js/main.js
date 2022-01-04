@@ -32,23 +32,40 @@ function handleSearch(ev){
 
 // fail search user
 function renderError(){
-    messageError.innerHTML ="Sorry! not found. Let's try another movie";
+    messageError.innerHTML ="Sorry! not found. Let's try another movie.";
 }
 
 //RENDER Part #2  *user results & clear list
 function renderAnimeTvShows(){
     listContainer.innerHTML="";
-    
+
+
     tvSerieslist.forEach(choice => {
     const replaceImg = choice.image_url.replace(imageError)
     listContainer.innerHTML +=`<li class="js_results js-eachCard" data-id="${choice.mal_id}"> 
                                 <img class="movie_img" src= ${replaceImg}" alt="anime show"  
-                                <h3 class="movie_title">${choice.title}</h3> </li>`;           
+                                <h3 class="movie_title">${choice.title}</h3> </li>`;    
+                                
+                                
+                    
     })       
           
      listenEachCard(); 
-}
 
+
+     // Keep favorite class after reset
+     const listUser = document.getElementsByClassName("js-eachCard");
+     const listFav = document.getElementsByClassName("js_favorites__childs");
+
+     for (const eachClassFav  of listFav) {
+       for (const eachClassList of listUser) {
+         if ((eachClassList.dataset.id) === (eachClassFav.dataset.id)) {
+            eachClassList.classList.add("js_colors");
+            eachClassList.classList.remove("js-eachCard");
+         }
+       }
+     }
+}
 
 //Reset search user & fail search
 const btnReset = document.querySelector(".js_btnReset");
@@ -58,7 +75,6 @@ btnReset.addEventListener("click", (ev) => {
     input.value="";
     messageError.innerHTML ="";   
 })
-
 
 //RENDER Part #3   *create a favorite list
 // looking for "click"
@@ -76,18 +92,18 @@ const handleAddCardFav = (favorite) => {
         const favClickedId = parseInt(favorite.currentTarget.dataset.id)
         const changeColor = favorite.target.parentElement;
         changeColor.classList.toggle("js_colors");
-        changeColor.classList.remove("js_results");
+        changeColor.classList.toggle("js_results");
+        const listUser = document.getElementsByClassName("js-eachCard");
 
-   
-        // if (changeColor.classLIs contains.(js_colors)){}
         const lookingClickedObject = tvSerieslist.find(
             (favoriteId) => favoriteId.mal_id === favClickedId);
        
         const selectedFav = fav.find(
             (eachFav) => eachFav.mal_id === favClickedId);    
-    
+
+
 // Part #3.2
-// Push fav object into fav list
+// Push fav object into fav list & remove if it is unselected on searching list
 
 
         if (selectedFav === undefined) {
@@ -95,13 +111,13 @@ const handleAddCardFav = (favorite) => {
           } else {
             const removeFavFromList = fav.findIndex(id => id.mal_id === favClickedId);
             fav.splice(removeFavFromList,1);
+            // listUser.classList.add("js-eachCard");
           }
 
-          renderFav(fav)
-          setLocalStorageFav(); 
+        renderFav(fav)
+        setLocalStorageFav(); 
         
 };
-
 
 // Part #3.3 
 // Render fav list by DOM
@@ -157,7 +173,6 @@ const handleRemoveFavCard = (remove) => {
     setLocalStorageFav(); 
 }   
  
-
 // Part #4; LOCAL STORAGE
     const setLocalStorageFav = () => {
         const stringifytvSeriesFav = JSON.stringify(fav);
