@@ -151,9 +151,12 @@ const renderFav = () => {
             listFavDom.innerHTML="";
             fav.splice(0, fav.length)
             setLocalStorageFav();
+            renderAnimeTvShows();
+            
+
         })
 
-        renderAnimeTvShows();
+        // renderAnimeTvShows();
         listenRemoveFav();      
 }       
 

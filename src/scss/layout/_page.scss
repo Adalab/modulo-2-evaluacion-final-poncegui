@@ -36,7 +36,7 @@
     border-radius: 30px;
     height: 35px;
     margin-left: 1%;
-    color: white;
+    color: $white;
     box-shadow: $pink;
     cursor: pointer;
     font-family: $font-text;
@@ -54,7 +54,7 @@
     border-radius: 30px;
     height: 35px;
     margin-left: 1%;
-    color: white;
+    color: $white;
     box-shadow: $blue;
     cursor: pointer;
     font-family: $font-text;
@@ -74,7 +74,7 @@
   border-radius: 30px;
   height: 35px;
   margin-left: 1%;
-  color: white;
+  color: $white;
   box-shadow: $blue;
   cursor: pointer;
   font-family: $font-text;
@@ -117,7 +117,7 @@
         grid-column: 2;
       }
 
-      @media (min-width: 1300px) {
+      @media (min-width: 1200px) {
         grid-template-columns: 1fr 1fr 1fr;
         grid-column: 3;
       }
@@ -126,6 +126,7 @@
         height: 250px;
         width: 200px;
         margin: auto;
+
         @media (max-width: 768px) {
           height: 200px;
           width: 150px;
@@ -143,6 +144,7 @@
     border: solid $pink;
     border-radius: 5px;
     text-align: center;
+    font-weight: bold;
 
     &__container {
       display: flex;
@@ -157,6 +159,7 @@
       width: 200px;
       margin: auto;
       border-radius: 30px;
+
       @media (max-width: 768px) {
         height: 200px;
         width: 150px;
@@ -172,15 +175,10 @@
   }
 }
 
-// ul {
-//   margin: 30px;
-//   text-align: center;
-// }
-
 //JS class
 .js_results li {
   font-size: 20px;
-  color: rgb(41, 107, 151);
+  color: $blue;
   font-weight: bold;
 }
 .js_colors {
@@ -190,7 +188,6 @@
   border-radius: 30px;
   font-size: 20px;
   padding: 15px;
-  margin: 15px;
   font-weight: bold;
 }
 .js_results {
@@ -210,14 +207,9 @@
   border-radius: 50px;
   box-shadow: $pink;
   cursor: pointer;
-  // position: relative;
-  // translate: 50px;
-  // transform: translateY(-140px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 15px;
+
   @media (max-width: 768px) {
     position: relative;
     translate: 50px;
@@ -246,8 +238,8 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  margin-top: 25px;
+  // padding: 10px;
+  // margin-top: 25px;
 
   @media (max-width: 768px) {
     text-align: center;
