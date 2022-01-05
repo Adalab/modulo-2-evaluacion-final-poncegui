@@ -7,10 +7,12 @@ const imageError = "https://via.placeholder.com/100x75?text=Ups!+we+are+not+perf
 const messageError = document.querySelector(".js_messageError");
 const listContainer = document.querySelector(".js_results");
 const listFavDom = document.querySelector(".js_favorites");
+const newBtn = document.querySelector(".js_newBtn")
 
 //ARRAYS
 let tvSerieslist = [];
 let fav = [];
+
 
 //Part #1; FETCH 
 function handleSearch(ev){
@@ -22,13 +24,19 @@ function handleSearch(ev){
     .then(response => response.json())
     .then((moviesData) => {
         tvSerieslist = moviesData.results;
+      
+  
         if (tvSerieslist == undefined) {
             renderError();
             input.value="";
         } else 
-        renderAnimeTvShows();    
+        renderAnimeTvShows();
+     
+ 
     });
-}  
+  
+} 
+
 
 // fail search user
 function renderError(){
@@ -38,15 +46,16 @@ function renderError(){
 //RENDER Part #2  *user results & clear list
 function renderAnimeTvShows(){
     listContainer.innerHTML="";
-
+ 
     tvSerieslist.forEach(choice => {
     const replaceImg = choice.image_url.replace(imageError)
+
     listContainer.innerHTML +=`<li class="js_results js-eachCard" data-id="${choice.mal_id}"> 
-                                <img class="movie_img" src= ${replaceImg}" alt="anime show"  
-                                <h3 class="movie_title">${choice.title}</h3> </li>`;    
-                                      
+                                <img class="movie_img" src= ${replaceImg}" alt="anime show"> 
+                                <h3 class="movie_title">${choice.title}</h3><h4>${choice.episodes}</h4></li>`;    
+                          
     })       
-          
+ 
      listenEachCard(); 
 
      // Keep favorite class after reset
@@ -61,7 +70,23 @@ function renderAnimeTvShows(){
          }
        }
      }
+
+    //  handleNew()
 }
+
+
+function handleNew(){
+   const movieTitle = document.querySelectorAll(".movie_title");
+
+   for (const title of movieTitle){
+       console.log(title.textContent)
+   }
+
+}
+
+
+newBtn.addEventListener("click", handleNew);
+
 
 //Reset search user & fail search
 const btnReset = document.querySelector(".js_btnReset");
@@ -123,6 +148,7 @@ const renderFav = () => {
         const imgFav = document.createElement("img");
         const btnFav = document.createElement("btn");
         btnFav.classList.add("js_favorites__childs");
+        
 
             titleFav.textContent = favMovie.title
             imgFav.src = favMovie.image_url
@@ -187,6 +213,7 @@ const handleRemoveFavCard = (remove) => {
 
 // //LISTENERS
 btnSearch.addEventListener("click", handleSearch);
+
 
 
 
